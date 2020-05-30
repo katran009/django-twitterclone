@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="{% static 'styles.css'% }"> -->
+        <title>TwitterUser</title>
+    </head>
+    <body>
+        {% include "navbar.html" %}
+        <h1>Profile of: {{ targeteduser.username }}</h1>
+        <p>@{{ targeteduser }}</p>
+        <p>Display Name: {{ targeteduser.display_name }}</p>
+        <p>Number of Tweets: {{ num_tweets }}</p>
+
+        <p>Number of Followers @{{ targeteduser }} You Are Following: {{ num_followers }}</p>
+        {% if targeteduser.username != request.user.username %}
+        <a href="/follow/{{ targeteduser.username }}">
+            <button>{{ follow_status_button }}</button>
+        </a>
+        {% else %}
+        <p>Number of Notifications: {{ notifications }}</p>
+        {% endif %}
+        {% include "tweets.html" %}
+    </body>
+</html>

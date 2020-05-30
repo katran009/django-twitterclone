@@ -1,0 +1,7 @@
+<h2>Tweet Tweet Tweet</h2>
+{% for t in tweets %}
+<p>{{ t.username }} on {{ t.date }}</p>
+<p>{{ t.tweet }}</p>
+<p>tweet id {{ t.id }}</p>
+<p>---</p>
+{% endfor %}
